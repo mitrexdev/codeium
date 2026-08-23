@@ -6,9 +6,10 @@ import { api } from "@/convex/_generated/api";
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const installationId = url.searchParams.get("installation_id");
-  const setupAction = url.searchParams.get("setup_action");
 
-  if (!installationId || (setupAction && setupAction !== "install")) {
+  // Accept both fresh installs (setup_action=install) and reconfigurations
+  // (setup_action=update) — both carry installation_id.
+  if (!installationId) {
     redirect("/dashboard/connectors");
   }
 
