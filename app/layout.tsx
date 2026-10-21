@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ServiceWorkerRegister } from "@/components/sw-register";
+import { MonetagAds } from "@/components/monetag-ads";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <ServiceWorkerRegister />
+        <MonetagAds />
         <script
           // Apply saved theme before first paint to avoid flash
           dangerouslySetInnerHTML={{
